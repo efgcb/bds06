@@ -1,0 +1,19 @@
+
+.assentmentDetails-content-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;   
+  padding: 0 10px 0 10px;
+}
+
+.assentmentDetails-container h1 {
+    display: flex;
+    justify-content: left;
+    color: #ffffff;
+    font-size: 24px;
+    margin-top: 12px;   
+    margin: 17px 45px 16px 10px;
+    margin-right: 45px;
+  }
+
+ 
