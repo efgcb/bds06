@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "@types/history": "^5.0.0",
-    "@types/qs": "^6.9.7",
-    "history": "^5.2.0",
-    "qs": "^6.10.3"
-  }
-}
