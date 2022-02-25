@@ -1,12 +1,7 @@
-import { useHistory } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-
 
 import { useState } from 'react';
-
-
-import { getAuthData, requestBackendLogin, saveAuthData } from '../../util/requests';
-
+import { useForm } from 'react-hook-form';
+import { requestBackendLogin } from '../../util/requests';
 
 import './styles.css';
 
@@ -16,41 +11,38 @@ type FormData = {
 };
 
 const Login = () => {
+
   const [hasError, setHasError] = useState(false);
+
 
   const { register, handleSubmit, formState: {errors} } = useForm<FormData>();
 
-  const history = useHistory();
-
   const onSubmit = (formData: FormData) => {
-    requestBackendLogin(formData)
-      .then((response) => {
-        saveAuthData(response.data);
-        const token = getAuthData().access_token;
-        console.log('TOKEN GERADO: ' + token);
+    requestBackendLogin(formData)   
+      .then(response => {
         setHasError(false);
         console.log('SUCESSO', response);
-        history.push('/movies');
       })
-      .catch((error) => {
-        setHasError(true);
-        console.log('ERRO', error);
-      });
-  };
+        .catch(error => {
+          setHasError(true);
+          console.log('ERRO',error);
+        });
+      };
+        
 
   return (
     <div className="base-card login-card">
-      <h1>LOGIN</h1>
+      <h1>LOGIN</h1>    
       {hasError && (
-        <div className="alert alert-danger">
-          Ocorreu um erro no login
+      <div className="alert alert-danger">
+        Ocorreu um erro no Login
         </div>
-      )}
+        )}
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-4">
           <input
             {...register('username', {
-              required: 'O campo Nome é obrigatório!!',
+              required: 'O campo Email é obrigatório!!',
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                 message: 'Email inválido'

@@ -1,7 +1,5 @@
-
-import Assentment from "components/Assentment";
-import AssentmentAval from "components/AssentmentAval";
-
+import Assentment from '../../components/Assentment';
+import AssentmentAval from '../../components/AssentmentAval';
 import './styles.css';
 
 
