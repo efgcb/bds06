@@ -1,5 +1,7 @@
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import qs from 'qs';
+
+export const BASE_URL =  process.env.REACT_APP_BACKEND_URL ?? 'https://movieflix-devsuperior.herokuapp.com';
 
 type LoginResponse = {
     access_token: string;
@@ -11,7 +13,7 @@ type LoginResponse = {
     userId: number;
 }
 
-export const BASE_URL =  process.env.REACT_APP_BACKEND_URL ?? 'https://movieflix-devsuperior.herokuapp.com';
+
 
 const tokenKey = 'authData';
 
@@ -38,6 +40,15 @@ export const requestBackendLogin = (loginData: LoginData) => {
 
     return axios({method: 'POST', baseURL: BASE_URL, url: '/oauth/token', data,headers});
 }
+
+export const requestBackend = (config: AxiosRequestConfig) => {
+    return axios(config);
+} 
+
+
+
+
+
 
 export const saveAuthData = (obj : LoginResponse) => {
     localStorage.setItem(tokenKey, JSON.stringify(obj));

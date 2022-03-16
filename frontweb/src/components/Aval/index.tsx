@@ -1,6 +1,6 @@
 import './styles.css';
 
-const AssentmentAval = () => {
+const AvalCard = () => {
   return (
     <div className="base-card aval">
       <form>
@@ -18,4 +18,4 @@ const AssentmentAval = () => {
   );
 };
 
-export default AssentmentAval;
+export default AvalCard;

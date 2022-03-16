@@ -1,15 +1,14 @@
 import { Router, Route, Switch } from 'react-router-dom';
-import Assentment from './components/Assentment';
-import AssentmentAval from './components/AssentmentAval';
 
 import Navbar from "./components/Navbar";
 import Auth from './pages/Auth';
 import history from './util/history';
+import Movie from 'pages/Movie';
+import MovieDetails from 'pages/MovieDetails';
 
 
 
 const Routes = () =>  (
-
         <Router history={history}>
         <Navbar />
         <Switch>
@@ -17,16 +16,14 @@ const Routes = () =>  (
                 <Auth/>
             </Route>           
             <Route path="/movies" exact>
-                <Assentment/>
+                <Movie/>
             </Route>
-            <Route path="/movies/1">
-                <AssentmentAval/>
+            <Route path="/movies/:movieId">
+                <MovieDetails/>
             </Route>
         </Switch>        
         </Router>
-
     );
-
 
 export default Routes;
 
