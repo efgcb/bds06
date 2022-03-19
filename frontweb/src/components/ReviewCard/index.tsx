@@ -11,7 +11,7 @@ const ReviewCard = ({ review } : Props) => {
     <div className="assentment-card-container">
       <div className="assentment-top-container">
         <StarImage />
-        <h6>{review.text}</h6>
+        <h6>{review.user.name}</h6>
       </div>
       <div className="assentment-content-container">
         <p>{review.text}</p>
