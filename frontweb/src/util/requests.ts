@@ -13,8 +13,6 @@ type LoginResponse = {
     userId: number;
 }
 
-
-
 const tokenKey = 'authData';
 
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID ?? 'myclientid';
@@ -42,13 +40,13 @@ export const requestBackendLogin = (loginData: LoginData) => {
 }
 
 export const requestBackend = (config: AxiosRequestConfig) => {
-    return axios(config);
+        const headers = config.withCredentials ? {
+            ...config.headers,
+            Authorization: "Bearer " + getAuthData().access_token
+        } : config.headers;
+
+    return axios({...config, baseURL: BASE_URL, headers});
 } 
-
-
-
-
-
 
 export const saveAuthData = (obj : LoginResponse) => {
     localStorage.setItem(tokenKey, JSON.stringify(obj));
