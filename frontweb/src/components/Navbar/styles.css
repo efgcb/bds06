@@ -14,7 +14,7 @@
 }
 
 .btn-sair, .btn-sair:hover {     
-    display: none; 
+  
     box-sizing: border-box;
     align-items: center;
     justify-content: center;
@@ -24,6 +24,9 @@
     font-size: 14px;
     width: 100px;
     height: 30px;
+}
+.btn-navbar-login {
+    display: none;
 }
 
 

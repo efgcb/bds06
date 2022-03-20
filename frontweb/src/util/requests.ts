@@ -8,7 +8,7 @@ export const BASE_URL =  process.env.REACT_APP_BACKEND_URL ?? 'https://movieflix
 
 type Role = 'ROLE_OPERATOR' | 'ROLE_ADMIN';
 
-type TokenData = {
+export type TokenData = {
     exp: number;
     user_name: string;
     authorities: Role[];
@@ -66,6 +66,10 @@ export const saveAuthData = (obj : LoginResponse) => {
 export const getAuthData = () => {
     const str = localStorage.getItem(tokenKey) ?? "{}";
     return JSON.parse(str) as LoginResponse;   
+}
+
+export const removeAuthData = () => {
+    localStorage.removeItem(tokenKey);
 }
 
 
