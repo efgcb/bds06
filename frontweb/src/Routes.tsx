@@ -4,6 +4,7 @@ import Auth from './pages/Auth';
 import history from './util/history';
 import Movie from 'pages/Movie';
 import MovieDetails from 'pages/MovieDetails';
+import PrivateRoute from 'components/PrivateRoute';
 
 const Routes = () => (
   <Router history={history}>
