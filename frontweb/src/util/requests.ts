@@ -1,13 +1,12 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import jwtDecode from 'jwt-decode';
 import qs from 'qs';
-import { ResolverSuccess } from 'react-hook-form';
 import history from './history';
 
 export const BASE_URL =  process.env.REACT_APP_BACKEND_URL ?? 'https://movieflix-devsuperior.herokuapp.com';
 
 
-type Role = 'ROLE_MEMBER' | 'ROLE_VISITOR';
+export type Role = 'ROLE_MEMBER' | 'ROLE_VISITOR';
 
 export type TokenData = {
     exp: number;
@@ -88,7 +87,7 @@ axios.interceptors.response.use(function (response) {
   //
     return response;
   }, function (error) {
-      if (error.response.status === 401 || error.response.status === 403) {
+      if (error.response.status === 401) {
           history.push('/admin/auth');
       }
     return Promise.reject(error);

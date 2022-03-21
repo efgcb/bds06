@@ -1,3 +1,4 @@
+import PrivateRoute from 'components/PrivateRoute';
 import { Link } from 'react-router-dom';
 import './styles.css';
 
@@ -6,12 +7,12 @@ const Movie = () => {
     <div className="assentment-container">     
 
       <h1>Tela listagem de filmes</h1>
-      <Link to="/movies/1">
+      <PrivateRoute path="/movies/1">
         <p>Acessar /movies/1</p>
-      </Link>
-      <Link to="/movies/2">
+      </PrivateRoute>
+      <PrivateRoute path="/movies/2">
         <p>Acessar /movies/2</p>
-      </Link>
+      </PrivateRoute>
     </div>
   );
 };
