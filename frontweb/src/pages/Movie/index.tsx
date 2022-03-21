@@ -1,13 +1,9 @@
 import { Link } from 'react-router-dom';
-import { hasAnyRoles } from 'util/requests';
 import './styles.css';
 
 const Movie = () => {
   return (
     <div className="assentment-container">     
-
-    <h1> Resultado = {hasAnyRoles(['ROLE_MEMBER']) ? 'SIM' : 'NAO'}</h1>
-
 
       <h1>Tela listagem de filmes</h1>
       <Link to="/movies/1">

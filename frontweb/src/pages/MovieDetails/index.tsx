@@ -4,7 +4,7 @@ import ReviewCard from 'components/ReviewCard';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Review } from 'types/review';
-import { requestBackend} from 'util/requests';
+import { hasAnyRoles, requestBackend} from 'util/requests';
 
 import './styles.css';
 
@@ -31,7 +31,11 @@ const MovieDetails = () => {
     <div className="assentmentDetails-container">
       <div className="assentmentDetails-content-container">
         <h1>Tela detalhes do filme id: {movieId}</h1>
-        <AvalCard />  
+
+        {hasAnyRoles(['ROLE_MEMBER']) && (
+          <AvalCard />  
+        )}
+
          {review?.map((item) => (
            <div className="content-reviews" key={item.id}>
             <ReviewCard review={item}/>       
