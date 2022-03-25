@@ -14,3 +14,22 @@
     font-size: 18px;
    
   }
+
+  .aval {
+    display: flex;   
+    background-color: #6C6C6C;
+    Width: 300px;
+    Height: 157px;
+    padding: 20px 10px;
+    margin-bottom: 20px;
+}
+
+.box {
+    height: 50px;
+}
+
+.btn-aval {
+    width: 100%;
+    height: 50px;
+    font-weight: bold;
+}

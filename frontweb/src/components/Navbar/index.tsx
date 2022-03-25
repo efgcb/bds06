@@ -1,7 +1,9 @@
 import { AuthContext } from 'AuthContext';
 import { useContext, useEffect } from 'react';
+import { getTokenData, isAuthenticated } from 'util/auth';
 import history from 'util/history';
-import { getTokenData, isAuthenticated, removeAuthData } from 'util/requests';
+import { removeAuthData } from 'util/storage';
+
 import './styles.css';
 
 const Navbar = () => {

@@ -1,10 +1,11 @@
-import{ AxiosRequestConfig } from 'axios';
+import { AxiosRequestConfig } from 'axios';
 import AvalCard from 'components/Aval';
 import ReviewCard from 'components/ReviewCard';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Review } from 'types/review';
-import { hasAnyRoles, requestBackend} from 'util/requests';
+import { hasAnyRoles } from 'util/auth';
+import { requestBackend } from 'util/requests';
 
 import './styles.css';
 
@@ -13,19 +14,24 @@ type UrlParams = {
 };
 const MovieDetails = () => {
   const { movieId } = useParams<UrlParams>();
-  const [review, setReview] = useState<Review[]>();
-
+  const [reviews, setReviews] = useState<Review[]>([]);
+ 
   useEffect(() => {
-    const params : AxiosRequestConfig = {
+    const params: AxiosRequestConfig = {
       url: `/movies/${movieId}/reviews`,
-      withCredentials: true
+      withCredentials: true,
     };
 
     requestBackend(params).then((response) => {
-      setReview(response.data);
+      setReviews(response.data);
     });
-  },[movieId]);
+  }, [movieId]);
 
+const handleInsertReview = (review: Review) => {
+  const clone = [...reviews];
+  clone.push(review);
+  setReviews(clone);
+}
 
   return (
     <div className="assentmentDetails-container">
@@ -33,14 +39,14 @@ const MovieDetails = () => {
         <h1>Tela detalhes do filme id: {movieId}</h1>
 
         {hasAnyRoles(['ROLE_MEMBER']) && (
-          <AvalCard />  
+       <AvalCard movieId={movieId} onInsertReview={handleInsertReview}/>      
         )}
 
-         {review?.map((item) => (
-           <div className="content-reviews" key={item.id}>
-            <ReviewCard review={item}/>       
-        </div>
-         ))}
+        {reviews?.map((item) => (
+          <div className="content-reviews" key={item.id}>
+            <ReviewCard review={item} />
+          </div>
+        ))}
       </div>
     </div>
   );
