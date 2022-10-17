@@ -1,3 +1,4 @@
+
 import axios, { AxiosRequestConfig } from 'axios';
 import qs from 'qs';
 import history from './history';
@@ -5,6 +6,7 @@ import { getAuthData } from './storage';
 
 export const BASE_URL =
   process.env.REACT_APP_BACKEND_URL ??
+ // 'http://localhost:8080';
   'https://movieflix-devsuperior.herokuapp.com';
 
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID ?? 'myclientid';

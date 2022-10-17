@@ -4,6 +4,12 @@ a:hover {
   color: unset;
 }
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
 .base-input {
   border-radius: 4px;
   font-size: 1em;
